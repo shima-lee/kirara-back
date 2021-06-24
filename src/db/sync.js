@@ -5,6 +5,7 @@
 
 const seq = require('./seq')
 
+// pre-lint test
 seq.authenticate().then(() => {
     console.log('auth ok')
 }).catch(err => {
