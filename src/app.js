@@ -11,8 +11,9 @@ const redisStore = require('koa-redis')
 const { REDIS_CONF } = require('./conf/db')
 
 const index = require('./routes/view/index')
-const users = require('./routes/api/users')
+const userViewRouter = require('./routes/view/user')
 const routeError = require('./routes/view/error')
+const userAPIRouter = require('./routes/api/user')
 
 // error handler
 let onerrorConfig = {
@@ -57,7 +58,8 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+app.use(userViewRouter.routes(), userViewRouter.allowedMethods())
+app.use(userAPIRouter.routes(), userAPIRouter.allowedMethods())
 app.use(routeError.routes(), routeError.allowedMethods())
 
 // error-handling
