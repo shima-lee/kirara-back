@@ -5,7 +5,7 @@ let REDIS_CONF = {
     host: '127.0.0.1',
 }
 
-let MySQL_CONF = {
+let MYSQL_CONF = {
     host: 'localhost',
     user: 'root',
     password: '12345678',

@@ -10,11 +10,15 @@ const redisStore = require('koa-redis')
 
 const { REDIS_CONF } = require('./conf/db')
 
-const index = require('./routes/index')
-const users = require('./routes/users')
+const index = require('./routes/view/index')
+const users = require('./routes/api/users')
+const routeError = require('./routes/view/error')
 
 // error handler
-onerror(app)
+let onerrorConfig = {
+    redirect: '/error'
+}
+onerror(app, onerrorConfig)
 
 // middlewares
 app.use(bodyparser({
@@ -44,7 +48,7 @@ app.use(session({
 }))
 
 // logger
- app.use(async (ctx, next) => {
+app.use(async (ctx, next) => {
     const start = new Date()
     await next()
     const ms = new Date() - start
@@ -54,6 +58,7 @@ app.use(session({
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
+app.use(routeError.routes(), routeError.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
