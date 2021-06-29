@@ -19,5 +19,9 @@ module.exports = {
     jsonSchemaFailInfo: {
         errno: 10004,
         message: '数据格式校验错误'
+    },
+    loginFailInfo: {
+        errno: 10005,
+        message: '登录失败'
     }
 }
