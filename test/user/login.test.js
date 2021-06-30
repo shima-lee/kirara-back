@@ -19,6 +19,12 @@ const testUser = {
 //存储cookie
 let COOKIE = ''
 
+// 自动化集成测试
+test('测试应成功 ', async () => {
+    const testsum = 2
+    expect(testsum).toBe(2)
+})
+
 
 // // 注册
 // test('注册用户，应成功 ', async () => {

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>2/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/6</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/10</span>
+                <span class='fraction'>2/10</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,29 +110,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -149,30 +149,30 @@ const { DEFAULT_PICTURE } = require('../conf/constant')
  * @param {Object} obj 用户对象
  * @returns 用户对象
  */
-function _formatUserPicture(obj) {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (obj.picture === null) {
-        obj.picture = DEFAULT_PICTURE
+function <span class="fstat-no" title="function not covered" >_formatUserPicture(</span>obj) {
+<span class="cstat-no" title="statement not covered" >    if (obj.picture === null) {</span>
+<span class="cstat-no" title="statement not covered" >        obj.picture = DEFAULT_PICTURE</span>
     }
 &nbsp;
-    return obj
+<span class="cstat-no" title="statement not covered" >    return obj</span>
 }
 &nbsp;
 /**
  * 格式化用户对象
  * @param {Array|Object} list 用户列表或单个用户对象 
  */
-function formatUser(list) {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (list === null) {
+function <span class="fstat-no" title="function not covered" >formatUser(</span>list) {
+<span class="cstat-no" title="statement not covered" >    if (list === null) {</span>
 <span class="cstat-no" title="statement not covered" >        return list</span>
     }
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (list instanceof Array) {
+<span class="cstat-no" title="statement not covered" >    if (list instanceof Array) {</span>
         // 数组形式
 <span class="cstat-no" title="statement not covered" >        return list.map(_formatUserPicture)</span>
     }
 &nbsp;
     // 单个对象
-    return _formatUserPicture(list)
+<span class="cstat-no" title="statement not covered" >    return _formatUserPicture(list)</span>
 }
 &nbsp;
 module.exports = {
@@ -184,7 +184,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jun 30 2021 12:30:34 GMT+0800 (中国标准时间)
+                at Wed Jun 30 2021 12:39:21 GMT+0800 (中国标准时间)
             </div>
         </div>
         <script src="../../prettify.js"></script>
