@@ -62,7 +62,8 @@ async function login(ctx, userName, password) {
     if (!userInfo) {
         return new ErrorModel(loginFailInfo)
     }
-    if (ctx.session.userInfo === null) {
+
+    if (!ctx.session.userInfo) {
         ctx.session.userInfo = userInfo
     }
     return new SuccessModel()
