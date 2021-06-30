@@ -6,8 +6,9 @@
     "start": "node bin/www",
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon --inspect=9229 bin/www",
     "prd": "cross-env NODE_ENV=production pm2 start bin/www",
-    "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors",
-    "lint": "eslint --ext .js ./src"
+    "test": "cross-env NODE_ENV=test jest --runInBand --forceExit --colors && npm run coverall",
+    "lint": "eslint --ext .js ./src",
+    "coverall": "cat coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "ajv": "^6.12.6",
@@ -30,10 +31,12 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
     "eslint": "^7.29.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "jest": "^27.0.5",
+    "istanbul": "^0.4.5",
+    "jest": "^27.0.6",
     "nodemon": "^1.19.1",
     "pre-commit": "^1.2.2"
   },
