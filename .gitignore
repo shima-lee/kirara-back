@@ -3,6 +3,10 @@ node_modules
 node_modules/
 .node_modules
 /dist
+coverage
+.coverage
+/coverage
+uploadFiles
 
 
 # local env files
