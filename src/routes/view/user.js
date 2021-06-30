@@ -20,10 +20,7 @@ function getLoginInfo(ctx) {
     if (userInfo) {
         data = {
             isLogin: true,
-            userName: userInfo.userName,
-            nickname: userInfo.nickname,
-            city: userInfo.city,
-            picture: userInfo.picture
+            userName: userInfo.userName
         }
     }
 
@@ -39,8 +36,8 @@ router.get('/register', async (ctx, next) => {
 })
 
 router.get('/setting', loginRedirect, async (ctx, next) => {
-    console.log
-    await ctx.render('setting', getLoginInfo(ctx))
+    console.log(ctx.session.userInfo)
+    await ctx.render('setting', ctx.session.userInfo)
 })
 
 
