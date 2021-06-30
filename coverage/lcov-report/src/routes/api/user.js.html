@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.55% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/22</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">54.55% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/22</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -114,27 +114,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,28 +154,28 @@ const { loginCheck } = require('../../middlewares/loginChecks')
 &nbsp;
 router.prefix('/api/user')
 &nbsp;
-router.post('/register', genValidator(userValidate), <span class="fstat-no" title="function not covered" >as</span>ync (ctx, next) =&gt; {
-    const { userName, password, gender } = <span class="cstat-no" title="statement not covered" >ctx.request.body</span>
-<span class="cstat-no" title="statement not covered" >    ctx.body = await register({ userName, password, gender })</span>
+router.post('/register', genValidator(userValidate), async (ctx, next) =&gt; {
+    const { userName, password, gender } = ctx.request.body
+    ctx.body = await register({ userName, password, gender })
 &nbsp;
 })
 &nbsp;
-router.post('/isExist', <span class="fstat-no" title="function not covered" >as</span>ync (ctx, next) =&gt; {
-    const { userName } = <span class="cstat-no" title="statement not covered" >ctx.request.body</span>
-    const ress = <span class="cstat-no" title="statement not covered" >await isExist(userName)</span>
-<span class="cstat-no" title="statement not covered" >    ctx.body = await isExist(userName)</span>
+router.post('/isExist', async (ctx, next) =&gt; {
+    const { userName } = ctx.request.body
+    const ress = await isExist(userName)
+    ctx.body = await isExist(userName)
 })
 &nbsp;
-router.post('/login', <span class="fstat-no" title="function not covered" >as</span>ync (ctx, next) =&gt; {
-    const { userName, password } = <span class="cstat-no" title="statement not covered" >ctx.request.body</span>
-<span class="cstat-no" title="statement not covered" >    ctx.body = await login(ctx, userName, password)</span>
+router.post('/login', async (ctx, next) =&gt; {
+    const { userName, password } = ctx.request.body
+    ctx.body = await login(ctx, userName, password)
 })
 &nbsp;
-router.post('/delete', loginCheck, <span class="fstat-no" title="function not covered" >as</span>ync (ctx, next) =&gt; {
-<span class="cstat-no" title="statement not covered" >    if (isTest) {</span>
+router.post('/delete', loginCheck, async (ctx, next) =&gt; {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (isTest) {
         //! 测试环境下，测试账号登录后删除自己
-        const { userName } = <span class="cstat-no" title="statement not covered" >ctx.session.userInfo</span>
-<span class="cstat-no" title="statement not covered" >        ctx.body = await deleteCurrentUser(userName)</span>
+        const { userName } = ctx.session.userInfo
+        ctx.body = await deleteCurrentUser(userName)
 &nbsp;
     }
 })
@@ -187,7 +187,7 @@ module.exports = router</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Wed Jun 30 2021 12:39:21 GMT+0800 (中国标准时间)
+                at Wed Jun 30 2021 12:59:46 GMT+0800 (中国标准时间)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
