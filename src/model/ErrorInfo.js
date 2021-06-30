@@ -27,5 +27,9 @@ module.exports = {
     loginCheckFailInfo: {
         errno: 10006,
         message: '您尚未登录'
+    },
+    deleteFailInfo: {
+        errno: 10007,
+        message: '删除失败'
     }
 }

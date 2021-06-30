@@ -3,9 +3,9 @@
  * @author shima_lee
  */
 
-const { getUserInfo, createUser } = require('../services/user')
+const { getUserInfo, createUser, deleteUser } = require('../services/user')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
-const { registerUserNameNotExist, registerUserNameExist, registerFailInfo, loginFailInfo } = require('../model/ErrorInfo')
+const { registerUserNameNotExist, registerUserNameExist, registerFailInfo, loginFailInfo, deleteFailInfo } = require('../model/ErrorInfo')
 const doCrypto = require('../utils/cryp')
 
 /**
@@ -69,8 +69,22 @@ async function login(ctx, userName, password) {
     return new SuccessModel()
 }
 
+/**
+ * 删除当前用户
+ * @param {*} userName 
+ */
+async function deleteCurrentUser(userName) {
+    const result = deleteUser(userName)
+    if (result) {
+        return new SuccessModel()
+    }
+
+    return new ErrorModel(deleteFailInfo)
+}
+
 module.exports = {
     isExist,
     register,
-    login
+    login,
+    deleteCurrentUser
 }
