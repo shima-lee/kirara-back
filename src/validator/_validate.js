@@ -15,6 +15,7 @@ const ajv = new Ajv({
  * @param {Object} data 带校验数据
  */
 function validate(schema, data={}) {
+    debugger
     const  valid = ajv.validate(schema, data)
     if (!valid) {
         return ajv.errors[0]

@@ -12,22 +12,22 @@ const SCHEMA = {
         userName: {
             type: 'string',
             pattern: '^[a-zA-Z][a-zA-Z0-9_]+$',
-            maxlength: 255,
-            minlength: 2
+            maxLength: 255,
+            minLength: 2
         },
         password: {
             type: 'string',
-            maxlength: 255,
-            minlength: 3
+            maxLength: 255,
+            minLength: 3
         },
         newPassword: {
             type: 'string',
-            maxlength: 255,
-            minlength: 3
+            maxLength: 255,
+            minLength: 3
         },
         nickname: {
             type: 'string',
-            maxlength: 255
+            maxLength: 255
         }
         
     }

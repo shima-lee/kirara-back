@@ -43,5 +43,9 @@ module.exports = {
     changePasswordFailInfo: {
         errno:10010,
         message: '修改密码失败'
+    },
+    createBlogFailInfo: {
+        errno: 10011,
+        message: '创建微博失败，请重试'
     }
 }
