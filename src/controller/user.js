@@ -144,7 +144,7 @@ async function changePassword(userName, password, newPassword) {
 
 /**
  * 退出登录
- * @param {*} ctx 
+ * @param {Object} ctx 
  * @returns 
  */
 async function logout(ctx) {
