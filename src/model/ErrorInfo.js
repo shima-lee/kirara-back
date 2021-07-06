@@ -39,5 +39,9 @@ module.exports = {
     changeInfoFailInfo: {
         errno: 10009,
         message: '修改基本信息失败'
+    },
+    changePasswordFailInfo: {
+        errno:10010,
+        message: '修改密码失败'
     }
 }
