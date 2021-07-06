@@ -3,9 +3,9 @@
  * @author shima_lee
  */
 
-const { getUserInfo, createUser, deleteUser } = require('../services/user')
+const { getUserInfo, createUser, deleteUser, updateUser } = require('../services/user')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
-const { registerUserNameNotExist, registerUserNameExist, registerFailInfo, loginFailInfo, deleteFailInfo } = require('../model/ErrorInfo')
+const { registerUserNameNotExist, registerUserNameExist, registerFailInfo, loginFailInfo, deleteFailInfo, changeInfoFailInfo, changePasswordFailInfo } = require('../model/ErrorInfo')
 const doCrypto = require('../utils/cryp')
 
 /**
@@ -82,9 +82,82 @@ async function deleteCurrentUser(userName) {
     return new ErrorModel(deleteFailInfo)
 }
 
+/**
+ * 修改个人信息
+ * @param {Object} ctx 
+ * @param {string} nickname 
+ * @param {string} city 
+ * @param {string} picture 
+ */
+async function changeInfo(ctx, {nickname, city, picture}) {
+    const { userName } = ctx.session.userInfo
+    if (!nickname) {
+        nickname = userName
+    }
+    console.log(nickname, city, picture)
+    //service
+    const result = updateUser(
+        {
+            newNickname: nickname,
+            newCity: city,
+            newPicture: picture
+        },
+        { 
+            userName 
+        }
+    )
+    if (result) {
+        Object.assign(ctx.session.userInfo, {
+            nickname,
+            city,
+            picture
+        })
+        return new SuccessModel()
+    }
+
+    // 失败
+    return new ErrorModel(changeInfoFailInfo)
+}
+
+/**
+ * 修改密码
+ * @param {string} userName 
+ * @param {string} password 
+ * @param {string} newPassword 
+ */
+async function changePassword(userName, password, newPassword) {
+    const result = await updateUser({ 
+        newPassword: doCrypto(newPassword)
+    },
+    {
+        userName,
+        password: doCrypto(password)
+    }
+    )
+
+    if (result) {
+        return new SuccessModel()
+    }
+    return new ErrorModel(changePasswordFailInfo)
+
+}
+
+/**
+ * 退出登录
+ * @param {Object} ctx 
+ * @returns 
+ */
+async function logout(ctx) {
+    delete ctx.session.userInfo
+    return new SuccessModel()
+}
+
 module.exports = {
     isExist,
     register,
     login,
-    deleteCurrentUser
+    deleteCurrentUser,
+    changeInfo,
+    changePassword,
+    logout
 }
