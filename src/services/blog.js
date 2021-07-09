@@ -56,6 +56,8 @@ async function getBlogListByUser({ userName, pageIndex = 0, pageSize = 10 }) {
         return blogItem
     })
 
+    console.log(blogList)
+
     return {
         count: result.count,
         blogList
