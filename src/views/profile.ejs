@@ -33,7 +33,12 @@
                 </div>
 
                 <!-- 粉丝 -->
-                <%- include('widgets/fans', { count: userData.fansData.count, userList: userData.fansData.list })%>
+                <%- include('widgets/fans', { 
+                    count: userData.fansData.count,
+                    userList: userData.fansData.list
+                    // count: 0,
+                    // userList: []
+                 })%>
 
             </div> <!-- 右侧结束 -->
         </div>
