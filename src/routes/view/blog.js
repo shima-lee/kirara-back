@@ -37,8 +37,9 @@ router.get('/profile/:userName', loginRedirect, async (ctx, next) => {
         curUserInfo = myUserInfo
     } else {
         const existResult = await isExist(curUserName)
+        console.log(existResult)
         // 用户不存在
-        if (existResult !== 0) {
+        if (existResult.errno !== 0) {
             return
         }
         curUserInfo = existResult.data
@@ -55,6 +56,11 @@ router.get('/profile/:userName', loginRedirect, async (ctx, next) => {
     const fansResult = await getFans(curUserInfo.id)
     const { count: fanscount, userList: fansList  } = fansResult.data
 
+    // 判断我是否关注
+    const amIFollowed = fansList.some(item => {
+        return item.userName === myUserName
+    })
+
     await ctx.render('profile', {
         blogData: {
             isEmpty,
@@ -70,7 +76,8 @@ router.get('/profile/:userName', loginRedirect, async (ctx, next) => {
                 count: fanscount,
                 list: fansList
                 
-            }
+            },
+            amIFollowed
         }
     })
 })
