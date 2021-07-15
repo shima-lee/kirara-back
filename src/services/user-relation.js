@@ -5,6 +5,7 @@
 
 const { User, UserRelation } = require('../db/model/index')
 const { formatUser } = require('../services/_format')
+const Sequelize = require('sequelize')
 
 
 /**
@@ -20,7 +21,10 @@ async function getUsersByFollower(followerId) {
         include: [{
             model: UserRelation,
             where: {
-                followerId
+                followerId,
+                userId: {
+                    [Sequelize.Op.ne]: followerId
+                }
             }
         }]
     })
@@ -54,7 +58,10 @@ async function getFollowerByUser(userId) {
             }
         ],
         where: {
-            userId
+            userId,
+            followerId: {
+                [Sequelize.Op.ne]: userId
+            }
         }
     })
 

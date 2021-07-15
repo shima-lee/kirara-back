@@ -3,9 +3,10 @@
  * @author shima_lee
  */
 
-const { createBlog } = require('../services/blog')
+const { createBlog, getFollowersBlogList } = require('../services/blog')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
 const { createBlogFailInfo } = require('../model/ErrorInfo')
+const { PAGE_SIZE } = require('../conf/constant')
 const xss = require('xss')
 
 /**
@@ -29,6 +30,28 @@ async function create({ userId, content, image }) {
     }
 }
 
+/**
+ * 获取首页玩微博列表
+ * @param {*} userId 
+ * @param {*} pageIndex 
+ */
+async function getHomeBlogList(userId, pageIndex = 0) {
+    console.log(userId)
+    const result = await getFollowersBlogList({userId, pageIndex, pageSize: PAGE_SIZE})
+
+    const { count, blogList } = result
+
+    return new SuccessModel({
+        isEmpty: blogList.length === 0,
+        blogList,
+        pageSize: PAGE_SIZE,
+        pageIndex,
+        count
+    })
+
+}
+
 module.exports = {
-    create
+    create,
+    getHomeBlogList
 }
