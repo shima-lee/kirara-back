@@ -31,7 +31,7 @@ async function create({ userId, content, image }) {
 }
 
 /**
- * 获取首页玩微博列表
+ * 获取首页微博列表
  * @param {*} userId 
  * @param {*} pageIndex 
  */

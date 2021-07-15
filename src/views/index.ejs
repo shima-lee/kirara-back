@@ -21,7 +21,7 @@
                             <% if (blogData.count> blogData.blogList.length) { %>
                                 <%- include('widgets/load-more', { pageSize: blogData.pageSize, pageIndex:
                                     blogData.pageIndex, count: blogData.count,
-                                    containerSelector: '#container-weibo-list' , api: '/api/blog/loadMore' , })%>
+                                    containerSelector: '#container-weibo-list' , api: '/api/blog/loadMore' })%>
                                     <% } %>
                                         <!-- 加载更多 结束 -->
                                         <% } %>

@@ -10,7 +10,11 @@
             <a href="/profile/<%= blog.user.userName%>">
                 <%= blog.user.nickname%>
             </a>:
-            <span><%- blog.content%></span>
+            <!-- <span><%- blog.content%></span> -->
+            <span>
+                <%- blog.contentFormat%>
+            </span>
+
         </div>
         <div class="info">
             <span><%= blog.createdAtFormat%></span>

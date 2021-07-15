@@ -26,7 +26,7 @@ router.get('/loadMore/:pageIndex', loginCheck, async (ctx, next) => {
     pageIndex = parseInt(pageIndex)  // 转换 number 类型
     const result = await getSquareBlogList(pageIndex)
     // 渲染模板
-    result.data.blogListTpl = getBlogListStr(result.data.blogList)
+    result.data.blogListTpl = getBlogListStr(result.data.blogList, true)
 
     ctx.body = result
 })
